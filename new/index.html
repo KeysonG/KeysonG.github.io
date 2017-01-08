@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Minecraft</title>
+
+<link rel="stylesheet" href="css/style.css">	
+<script
+			src="https://code.jquery.com/jquery-3.1.1.min.js"
+			integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+			crossorigin="anonymous"></script>
+
+	
+
+</head>
+<body>
+<div class="landingpage">
+<img src="assets/logo.png" alt=""><br>
+        <div class="glitch" data-text="ENTER">ENTER</div> 
+        <div id="loadInst" class="inst">INSTRUCTIONS</div>
+        <div class = "banner" id = "instDiv">
+            <button id ="instButt">X</button>
+            <ol>
+                <li>Select a tool to begin (choose carefully)</li>
+                <li>Dig the ground to find gold</li>
+                <li>Be careful there is also dynamite in the ground</li>
+                <li>If you hit a dynamite you lose 2 gold</li>
+                <li>If you plant 10 elements of any kind you earn 1 piece of gold</li>
+                <li>Once you plant you cant replant!</li>
+                <li>Once you collect all of the gold, you move on to next level!</li>
+                <li>If you hit dynamite and have 1 or less gold remaining, you Lose!</li>
+            </ol>
+
+        </div>
+
+</div>
+
+
+
+
+	<div id = "container">
+        <div class = "banner" id = "gold">
+            <span class = "minecraftBanner">YOU STRUCK GOLD!</span>
+            <div class = "tool bannerTool">
+                <img src="assets/tools/diamond_pickaxe.png" alt="diamondAxe">
+            </div>
+            <span class = "minecraftBanner">You earn Diamond Picaxe!</span>
+        </div>
+        <div class = "banner" id = "gameOver">
+            <span class = "minecraftBanner">GAME OVER</span>
+        </div>
+		<div id = "game">
+
+		</div>
+
+        <div id = "toolbar">
+
+        </div>
+        <div id = "NewGameAndLevel">
+            <button id = "newGame" >New Game</button>
+            <span id = "level"></span>
+            <span id = "goldLeft"></span>
+        </div>
+
+	</div>
+
+
+
+
+<script src="js/script.js"></script>
+</body>
+</html>

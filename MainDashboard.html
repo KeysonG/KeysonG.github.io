@@ -5,44 +5,30 @@
 	<link href="https://fonts.googleapis.com/css?family=Muli:200,300,400,600,700,800,900" rel="stylesheet">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 	<link rel="stylesheet" href="./css/style.css">
+
 	<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-	<script src="https://fb.me/react-0.14.0.js"></script>
-	<script src="https://fb.me/react-dom-0.14.0.js"></script>
-	<script src="generateScore.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-with-addons.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-dom.js"></script>
+
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.25/browser.min.js"></script>
 </head>
 <body>
 	<div>
-	<div class="loader">
-    <div class="circle"></div>
-	</div>
 		<div id="main-page"></div>
-		<div id="notification">
-			<p><span>valentineganansia@gmail.com</span> just sended you an email regarding the Zara project</p>
-		</div>
 	</div>
+
 	<script type="text/babel">
-
+		
+		var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup; // ES5 with react-with-addons.js
+	
 	var numOfProjects = 4;
-	var teamMembers = {};
 
-	// var getScore = setInterval(checkScore, 1000)
-	// function checkScore(){
-	// 	checkScore("omni", 10);
-	// }
-		var preloader = function (time) {
-        $(".loader").fadeIn("slow");
-        $(".loader").delay(time).fadeOut(500);
-    };
+	var teamMembers = {};
 
 	var AppScreen = React.createClass({
 		
 		handleClickedProjectItem: function(update){
-			var that = this;
-			preloader(1000);
-			setTimeout(function(){console.log(that);
-				that.setState({isShowMain: update});},1600);
-			
+			this.setState({isShowMain: update});
 		},
 		getInitialState: function(){
 			return{
@@ -73,6 +59,7 @@
 
 				<div>
 					<header>
+
 						<img onClick = {this.returnToHome} src="assets/logo.png" alt=""/>
 
 						<div className="title"><h1>PROJECTS</h1></div>
@@ -81,20 +68,12 @@
 					<main>
 						<div className="container">
 							<div className="row firstrow">
-								<ProjectItem handleClickedProjectItem={this.props.handleClickedProjectItem} plant="1.png" name="ZARA"/>
-								<ProjectItem handleClickedProjectItem={this.props.handleClickedProjectItem} plant ="assets/deadplant.gif" name="BurgerKing App"/>
+								<ProjectItem handleClickedProjectItem={this.props.handleClickedProjectItem}/>
+								<ProjectItem handleClickedProjectItem={this.props.handleClickedProjectItem}/>
 							</div>
 							<div className="row">
-								<ProjectItem handleClickedProjectItem={this.props.handleClickedProjectItem} plant= "5.png" name="Startup Landingpage"/>
-								<div onClick={this.handleClickProjectItem}>
-					<div className="project-item col-lg-6">
-						<PlantImage plant = {this.props.plant} />
-
-						<div className="project-card add-project">
-							<h1>ADD PROJECT</h1>
-						</div>
-					</div>
-				</div>
+								<ProjectItem handleClickedProjectItem={this.props.handleClickedProjectItem}/>
+								<ProjectItem handleClickedProjectItem={this.props.handleClickedProjectItem}/>
 							</div>
 						</div>
 					</main>
@@ -111,10 +90,15 @@
 		console.log("clicked")
 			this.props.handleClickedProjectItem(true)
 		},
+		getInitialState: function(){
+			return{
+				projectProgress: 1,
+				plants: ["1.png","2.png"]
+			}
+		},
 		componentDidMount: function() {
   			this.changePlant();
-  },
-
+		},
 		changePlant: function(){
 			  console.log("i work");
 
@@ -122,55 +106,7 @@
         var myVar = $(".showimg").eq(0).attr('id');
         console.log(myVar);
 
-        $("#encourage-btn").click(function (e) {
-        	$("#notification p").html("<span>Good Job!</span> Your reply is sent to yoannag@zaragroupisrael.com");
-        	$("#notification").css("right","500px")
-            var myVar = parseInt($(".showimg").eq(0).attr('id'));
-            var newVar = myVar + 1;
-            console.log(myVar);
-            e.preventDefault();
-            if(newVar<8){
-            	$("#notification").slideDown();
-            	setTimeout(function(){$("#notification").slideUp()},4000)
-                $(".showimg")
-                        .delay(1000).fadeOut(0, function () {
-                            $(".showimg").attr('src', (newVar) + ".png");
-                            $(".showimg").eq(0).attr('id', newVar);
-                        })
-                        .fadeIn(200);
-
-                $(".backimg").delay(1010).fadeOut(500, function () {
-                    $(".backimg").attr('src', (newVar) + ".png");
-                    $(".backimg").eq(0).attr('id', newVar);
-                }).fadeIn(10);
-            }
-
-        });
-          $(".main-plant").click(function (e) {
-          	$("#notification p").html("<span>valentineganansia@gmail.com</span> just sended you an email regarding the Zara project")
-            var myVar = parseInt($(".showimg").eq(0).attr('id'));
-            var newVar = myVar + 1;
-            console.log(myVar);
-            e.preventDefault();
-                    	$("#notification").css("right","400px")
-
-            if(newVar<8){
-            	$("#notification").slideDown();
-            	setTimeout(function(){$("#notification").slideUp()},4000)
-                $(".showimg")
-                        .delay(1000).fadeOut(0, function () {
-                            $(".showimg").attr('src', (newVar) + ".png");
-                            $(".showimg").eq(0).attr('id', newVar);
-                        })
-                        .fadeIn(200);
-
-                $(".backimg").delay(1010).fadeOut(500, function () {
-                    $(".backimg").attr('src', (newVar) + ".png");
-                    $(".backimg").eq(0).attr('id', newVar);
-                }).fadeIn(10);
-            }
-
-        });
+        $("#encourage-btn").click(this.handleAdd);
 
         $("#lower").click(function (e) {
             var myVar = parseInt($(".showimg").eq(0).attr('id'));
@@ -193,8 +129,41 @@
 
         });
 
-		},
+        function grow(e){
+            e.preventDefault();
+            var currentState = this.state.projectProgress;
+            var nextState = this.state.projectProgress + 1
 
+
+	       	 this.setState({projectProgress:nextState});
+            // var myVar = parseInt($(".showimg").eq(0).attr('id'));
+            var myVar = this.state.projectProgress;
+            var newVar = myVar
+
+            console.log(myVar);
+            if(newVar<8){
+                $(".showimg")
+                        .delay(1000).fadeOut(0, function () {
+                            $(".showimg").attr('src', (newVar) + ".png");
+                            $(".showimg").eq(0).attr('id', newVar);
+                        })
+                        .fadeIn(200);
+
+                $(".backimg").delay(1010).fadeOut(500, function () {
+                    $(".backimg").attr('src', (newVar) + ".png");
+                    $(".backimg").eq(0).attr('id', newVar);
+                }).fadeIn(10);
+            }
+
+        }
+
+		},
+		handleAdd: function() {
+			console.log(this)
+    		const newItems = this.state.plants.concat();
+    		console.log(newItems);
+   			this.setState({items: newItems});
+  		},
 		getDefaultProps: function(){
 			return{
 				ProjectInfo:{
@@ -205,31 +174,45 @@
 
 			}
 		},
+		
 		render: function(){
+			const items = this.state.plants.map((item, i) => (
+      <div key={item}>
+      <img className="plantimg showimg" id="1" src={item}/>
+      </div>
+
+    ));
+						console.log("map",items);
 
 			var title = this.props.ProjectInfo.title;
+			var projectProgress = this.state.projectProgress + ".png"
 			return(
 					<div>
 						<header>
-						<img onClick={this.returnToHome} className = "icon-back" src="assets/icons/icon-back.png"/>
-
+							<img onClick={this.returnToHome} className = "icon-back" src="assets/icons/icon-back.png"/>
 							<img onClick={this.returnToHome} src="assets/logo.png" alt=""/>
 							<div className="title">
-								<h1>ZARA REDESIGN</h1>
+								<h1>HACKATHON</h1>
 							</div>
 						</header>
 						<div className="green-line"></div>
 						<main>
+						  
+        
 							<div className="container">
 								<div className="row firstrow">
 									<div className="col-md-4">
-										<div className="main-plant">
-											<div className="plants">
-										        <img className="plantimg showimg" id="1" src="1.png" />
-										        <img className="plantimg backimg" id="0" src="1.png" />
-   									</div>
-
-										</div>
+							<div className="main-plant">
+									 <ReactCSSTransitionGroup
+									   transitionAppear={true}
+      									transitionAppearTimeout={500}
+								          transitionName="example"
+								          transitionEnterTimeout={500}
+								          transitionLeaveTimeout={300}>
+										   {items}
+   											
+										</ReactCSSTransitionGroup>
+									</div>	
 									</div>
 									<div className="col-md-8">
 										<NextStepComp />
@@ -252,6 +235,7 @@
 									</div>
 								</div>
 							</div>
+							
 						</main>
 					</div>
 				)
@@ -263,7 +247,7 @@
 
 			return(
 				<div className="plant">
-					<img src={this.props.plant} alt=""/>
+					<img src="assets/plant.png" alt=""/>
 				</div>
 
 			)
@@ -274,16 +258,9 @@
 	var ProjectItem = React.createClass({
 		getDefaultProps: function(){
 			return {
-				// projectName: this.props.name
+				projectName: "Untitled",
 			}
 		},
-		getInitialState: function(){
-			return{
-				projectProgress: 0.4,
-
-			}
-		},
-		
 		handleClickProjectItem: function(e){
 			e.preventDefault();
 
@@ -298,10 +275,10 @@
 
 				<div onClick={this.handleClickProjectItem}>
 					<div className="project-item col-lg-6">
-						<PlantImage plant = {this.props.plant} />
+						<PlantImage />
 
 						<div className="project-card">
-							<h2>{this.props.name}</h2>
+							<h2>{this.props.projectName}</h2>
 						</div>
 					</div>
 				</div>
@@ -332,14 +309,14 @@
 	var NextStepComp = React.createClass({
 	changeButton: function(e){
 	
-	$(e.target).fadeOut(200);
-	setTimeout(function(){	$(".load").fadeIn(200);
-		},200)
-	setTimeout(function(){$(e.target).text("✓");
-	$(e.target).fadeIn(200);
-	$(".load").fadeOut(400);
-	}, 1500);
-	$(e.target).attr("disabled", "true");
+	// $(e.target).fadeOut(200);
+	// setTimeout(function(){	$(".load").fadeIn(200);
+	// 	},200)
+	// setTimeout(function(){$(e.target).text("✓");
+	// $(e.target).fadeIn(200);
+	// $(".load").fadeOut(400);
+	// }, 1500);
+	// $(e.target).attr("disabled", "true");
 
 
 	
@@ -348,6 +325,7 @@
 		render:function(){
 			return(
 			<div className="next-step component">
+
 				<h3>Next Step</h3>
 				<h4 className ="water">Water this plant</h4>
 				<h2>Eden has to respond to this email</h2>
@@ -356,7 +334,7 @@
 					<img src="assets/email.png" alt="" />
 				</div>
 				<div className="encourage clearfix">
-				<button onClick={this.changeButton}id="encourage-btn">Send Reply</button>
+				<button onClick={this.changeButton}id="encourage-btn">Encourage Eden!</button>
 				<button onClick={this.changeButton} className="load"></button>
 				<img src="assets/profilepic/Eden.png" alt="" />
 
@@ -382,16 +360,16 @@
 				
 				<li>
 					<span> <img src='assets/icons/gmail.png' alt="" />
-					</span><span><strong>Aviram </strong>answered Jack on <span className="activity-type">Gmail</span></span><span className="date-left avi">5 days ago</span>
+					</span><span><strong>Gideon </strong>editited the <span className="activity-type">Google Docs</span> document </span><span className="date-left">5 days ago</span>
 				</li>
 				
 				<li>
 					<span> <img src='assets/icons/github.png' alt="" />
-					</span><span><strong>Eden </strong>push the project structre to  <span className="activity-type">Github</span> </span><span className="date-left eden">11/Jan/17</span>
+					</span><span><strong>Gideon </strong>editited the <span className="activity-type">Google Docs</span> document </span><span className="date-left">11/Jan/17</span>
 				</li>
 				<li>
 					<span> <img src='assets/icons/slack.png' alt="" />
-					</span><span><strong>Valentine </strong>created a new <span className="activity-type">Slack</span> channel </span><span className="date-left valentine">5/Jan/17</span>
+					</span><span><strong>Gideon </strong>editited the <span className="activity-type">Google Docs</span> document </span><span className="date-left">5/Jan/17</span>
 				</li>
 				</ul>
 			</div>
@@ -423,7 +401,7 @@
 					</span>
 						<div className="calenderevent">
 							<span>Meeting with </span> <span className="meetname">Omer Goldberg</span><br/>
-							<span className="meetbottomtext meetleft">12/2/17 </span><span className="meetbottomtext meetright">Rotschild Blvd.</span>
+							<span className="meetbottomtext meetleft">12/2/17 </span><span className="meetbottomtext meetright">Rotchild Blvd.</span>
 
 						</div>
 						<span> <img className="calendarprofilepic" src='assets/profilepic/Aviram.png' alt="" />
@@ -436,7 +414,7 @@
 					</span>
 						<div className="calenderevent">
 							<span>Team meeting with </span> <span className="meetname">Chen Mv</span><br/>
-							<span className="meetbottomtext meetleft">20/2/17 </span><span className="meetbottomtext meetright">Herzl St. 16</span>
+							<span className="meetbottomtext meetleft">20/2/17 </span><span className="meetbottomtext meetright">Hertzel  st  16</span>
 
 						</div>
 						<span> <img className="calendarprofilepic2" src='assets/profilepic/Valentine.png' alt="" />
@@ -457,10 +435,7 @@
 		<AppScreen />,
 		document.getElementById('main-page')
 	)
-
+		
 	</script>
-	
-
-
 </body>
 </html>

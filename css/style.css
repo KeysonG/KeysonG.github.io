@@ -1,410 +1,384 @@
+.clearfix:after {
+     visibility: hidden;
+     display: block;
+     font-size: 0;
+     content: " ";
+     clear: both;
+     height: 0;
+     }
+.clearfix { display: inline-block; }
+/* start commented backslash hack \*/
+* html .clearfix { height: 1%; }
+.clearfix { display: block; }
+/* close commented backslash hack */
 
-@font-face {
-    font-family: Minecraft;
-    src: url(../assets/Minecrafter.ttf);
-}
 
-/*html {
-    background: url(../assets/backgroundblue.png) no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-}*/
 body{
-    margin: 0;
-    font-family: 'Minecraft';
+	margin: 0;
+	font-family: 'Muli';
+		background-color: #F7F0F0;
 
-}
-.bannerTool{
-    margin:auto;
-    display:inline-block;
-}
-
-.bannerTool.tool{
-    margin-top:5%;
-    border:5px solid black;
-    height:160px;
-    width:200px;
-    border-radius:40px;
-    background-color:lightblue;
-
+	}
+strong { vertical-align: bottom; 
 }
 
-.minecraftBanner{
-    width:100%;
-    font-family:'Minecraft';
-    text-align:center;
-    font-size:50px;
-    color: #ffc106;
-
-}
-
-#gameOver{
-    height:200px;
-    width:300px;
-    font-size:60px;
-}
-
-.banner{
-    position:absolute;
-    left:33%;
-    top:10%;
-    width:500px;
-    height:500px;
-    display:none;
-    background-color:rgba(1,1,1,0.8);
-    text-align:center;
-    padding-top:20px;
-}
-.landingpage{
-    text-align: center;
-
-}
-.landingpage img{
-    width: 1000px;
-    /*	margin: 0 auto;
-        margin-top: 100px;*/
-        animation: key 0.5s infinite
-}
-@keyframes key{
-	   0%   {transform: translateX(2px);}
-	   15%   {transform: translateX(-2px);}
-	   50%   {transform: translateX(2px);}
-	   90%   {transform: translateX(-2px);}
-	   100%   {transform: translateX(2px);}
-
-  
-}
-button{
-	font-size:32px;
-    font-family: 'Minecraft';
-    padding:20px 30px;
-    border:none;
-    transition: transform 0.5s ease;
-    background: none;
-/*    color:white;
-*/}
-button:hover{
-		color: DarkGoldenRod;
-}
-
-#newGame{
-	display: none;
-}
-
-
-#container{
-    margin-top:1%;
-    width:auto;
-    height:auto;
-	margin: 0 auto;
-	margin-top:1%;
-	width:1300px;
-	height:auto;
+header{
+	background-color: #484349;
+	height: 175px;
 	text-align: center;
 
+	padding: 20px 40px;
 
 }
-/*************************GAME BOARD CSS *****************************************************/
-
-
-#game{
-
-    display:inline-block;
-    line-height: 0;
-    vertical-align:top;
-
+.title{
+	color:#D0D0D0;
+		text-align: left;
 }
-.cell{
-
-    background:black;
-    display: inline-block;
-    background-size: 100%;
-}
-.cell:hover{
-    box-sizing: border-box;
-    border: 1px solid white;
+.project-item, header img{
+	cursor: pointer;
 }
 
-
-.cloud{
-    background:white;
+header img{
 }
-
-.sky{
-    background:lightblue;
+header .icon-back{
+	display: block;
+	float: left;
+	margin-top: 25px;
 }
-
-
-.dirt{
-    background-image: url('../assets/blocks/dirt.jpg')
+main{
+	padding-bottom: 50px;
+	background-color: #F7F0F0;
+	padding-left: 50px;
 }
-
-.dirtGrass{
-    background-image: url('../assets/blocks/grass.jpg')
+.green-line{
+	width: 100%;
+	height: 10px;
+	background-color:#109648;
 }
-
-
-.stone{
-    background-image:url('../assets/blocks/rock.jpg')
+.project-card{
+	width: 300px;
+	height: 175px;
+	background-color: #18A999;
+	display: inline-block;
+	vertical-align: middle;
+	border-radius: 5px;
+	padding-left: 10px;
+	box-shadow: 0 5px 18px 1px rgba(0,0,0,0.28);
+	
 }
-
-.tree{
-    background-image:url('../assets/blocks/tree.jpg')
+.project-card h2{
+	color: white;
 }
-
-.treeBush{
-    background-image:url('../assets/blocks/leaf.gif')
-}
-.gold{
-	background-image: url('../assets/blocks/gold.jpg')
-}
-.dynamite{
-		background-image: url('../assets/blocks/dynamite.gif')
-
-}
-/************************TOOL BAR CSS *********************************************************/
-
-#toolbar{
-    background:darkslategray;
-    margin-right:1%;
-    display:none;
-    height: 550px;
-    width:200px;
-    padding:2%;
-    cursor:pointer;
-}
-
-
-#toolDiv{
-    width:200px;
-    margin:auto;
-    margin-top:10px;
-    height:auto;
+.plant{
+	display: inline-block;
+	padding-right: 20px;
+	padding-left: 80px;
 
 }
-
-.tool {
-    height: 70px;
-    width: 80px;
-    border-radius: 20px;
-    border: 2px solid black;
-    background-color: white;
-    margin:auto;
-    display:block;
-    margin-bottom:2%;
+.plant img{
+	width: 80px
 }
-
-.toolSel{
-    background-color:lightblue;
-    border:4px solid black;
+.row{
+	margin-top: 70px;
 }
-
-.toolImg{
-    display:block;
-    height:70px;
-    width:70px;
-    margin:auto;
+/*.firstrow{
+	margin-top: 30px;
 }
-
-
-.invDiv{
-    width:180px;
-    margin:auto;
-    margin-top:15px;
-    height:250px;
-    float:bottom;
+*/
+/***********project Dash***************/
+.component{
+	width: 500px;
+	height: 200px;
+	/* Rectangle 3 Copy 2: */
+box-shadow: 0 1px 15px 1px rgba(0,0,0,0.18);
+border-radius: 3px;
+background-color: white;
+color:#484349;
 
 }
+.main-plant{
+	padding-left: 130px;
+	height: 250px;
+	cursor: none;
+}
+.main-plant img{
+	width: 110px;
+}
+.next-step{
+	background-color: #18A999;
+	width: 700px;
+	height:250px;
+	padding-left: 20px;
+	padding-top: 2px;
+	color: white;
+	position: relative;
 
-.invItem{
-    height:70px;
-    width:70px;
-    display:inline-block;
-    margin:3px;
-    background-size:100%;
-    text-align:center;
+}
+.next-step .water{
+position: absolute;
+top:20;
+right:20;
+color: #007366;}
+.next-step h2{
+	margin-top: 10px;
+}
+.next-step .email{
+	display: inline-block;
+}
+.next-step .email img{
+	width: 300px;
+	margin-top: 15px;
 }
 
-.itemSelected{
-    border:3px solid black;
+.encourage{
+	float: right;
+	position: relative;
+	height: 150px;
+	width: 200px;
+	display: inline-block;
+}
+#encourage-btn{
+/*	display: none;
+*/		background:#007366;
+	border: none;
+	  position: absolute;
+  	bottom: 20;
+  	right: 100;
+/*  	padding: 10px 40px;
+*/  	box-shadow: 0 2px 0 0 rgba(0,0,0,0.50);
+  	border-radius: 3px;
+  	font-weight: 600;
+  	width: 160px;
+  	padding: 10px;
+
+}
+.next-step .load{
+	display: none;
+	background:url('../assets/icons/ellipsis.gif') no-repeat right center;
+	background-size: 30%;
+	background-position:50% 60%;
+
+
+
+		border: none;
+	  position: absolute;
+  	bottom: 20;
+  	right: 100;
+/*  	padding: 10px 40px;
+*/  	box-shadow: 0 2px 0 0 rgba(0,0,0,0.50);
+  	border-radius: 3px;
+  	font-weight: 600;
+  	width: 160px;
+  	padding: 10px;
+
+}
+button{
+	background-color: inherit;
+}
+.next-step .loader-gif{
+	background:url('../assets/icons/ellipsis.gif') no-repeat right center;
+	background-size: 30%;
+}
+.encourage img{
+	width: 50px;
+	 position: absolute;
+  	bottom: 15;
+  	right: 30;
+}
+.recent-activity{
+	padding-left: 20px;
+	padding-top: 2px;
 }
 
-.invText{
-line-height:80px;
-    color:white;
-    font-size:30px;
+.recent-activity h3{
+margin-top: 15px;
+}
+.recent-activity .date-left{
+margin-left: 80px;
+color: black;	
+font-weight: 600;
+}
+.recent-activity ul{
+	list-style: none;
+	margin-top: 15px;
+	padding: 0;
+}
+.recent-activity ul li{
+margin-top: 12px;
+vertical-align: middle;
+
+}
+.recent-activity ul li span{
+vertical-align: middle;
+
+}
+.recent-activity ul li img{
+margin-right: 10px;
+vertical-align: middle;
+width: 16px;
+}
+.recent-activity .activity-type{
+	color:#18A999;
+}
+.profile-pictures{
+	margin: 15px;
+	width: 60px;
+	height: auto;
+}
+.team-members h3{
+margin-top: 15px;
+}
+.calendar{
+	padding-left: 20px;
+	padding-top: 2px;
+}
+.calendar h3{
+	margin-top: 15px;
+	margin-bottom: 20px;
+}
+.calendar ul{
+	list-style: none;
+	padding: 0;
+}
+.calendar ul li{
+	vertical-align: middle;
+}
+.calendar ul li span{
+	vertical-align: middle;
+
+}
+.calendar ul li img{
+	margin-right: 10px;
+	vertical-align: top;
+	width: 36px;
+}
+.team-members{
+	padding-left: 20px;
+	padding-top: 2px;
+	
+}
+.project-buzz{
+	color:white;
+	padding-top: 2px;	
+	padding-left: 20px;
+	padding-top: 1px;
+	background-color: #484349;
+}
+.project-buzz h3{
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+.meetname{
+	font-weight: 700;
+}
+.meetbottomtext{
+	font-size: 13px;
+	font-weight: 700;
+	color: #49c2b9;
+}
+.calenderevent{
+	display: inline-block;
+	margin-bottom: 18px;
+}
+.meetright{
+	margin-left: 52px;
+	color:#333;
 }
 
-/*testing*/
-
-body {
-	background:black;
-/*  font-family: 'Varela', sans-serif;
-*/}
-
-.glitch {
-  color: DarkGoldenRod;
-  font-size: 100px;
-  position: relative;
-  width: 300px;
-  margin: 0 auto;
-  cursor: pointer;
+.project-buzz {
 }
 
-@keyframes noise-anim {
-  0% {
-    clip: rect(48px, 9999px, 100px, 0);
-  }
-  5% {
-    clip: rect(15px, 9999px, 58px, 0);
-  }
-  10% {
-    clip: rect(10px, 9999px, 44px, 0);
-  }
-  15% {
-    clip: rect(18px, 9999px, 100px, 0);
-  }
-  20% {
-    clip: rect(36px, 9999px, 59px, 0);
-  }
-  25% {
-    clip: rect(64px, 9999px, 78px, 0);
-  }
-  30% {
-    clip: rect(64px, 9999px, 30px, 0);
-  }
-  35% {
-    clip: rect(33px, 9999px, 96px, 0);
-  }
-  40% {
-    clip: rect(64px, 9999px, 86px, 0);
-  }
-  45% {
-    clip: rect(24px, 9999px, 78px, 0);
-  }
-  50% {
-    clip: rect(19px, 9999px, 5px, 0);
-  }
-  55% {
-    clip: rect(96px, 9999px, 78px, 0);
-  }
-  60% {
-    clip: rect(91px, 9999px, 57px, 0);
-  }
-  65% {
-    clip: rect(18px, 9999px, 18px, 0);
-  }
-  70% {
-    clip: rect(97px, 9999px, 35px, 0);
-  }
-  75% {
-    clip: rect(60px, 9999px, 35px, 0);
-  }
-  80% {
-    clip: rect(21px, 9999px, 56px, 0);
-  }
-  85% {
-    clip: rect(21px, 9999px, 44px, 0);
-  }
-  90% {
-    clip: rect(76px, 9999px, 96px, 0);
-  }
-  95% {
-    clip: rect(82px, 9999px, 16px, 0);
-  }
-  100% {
-    clip: rect(22px, 9999px, 42px, 0);
-  }
+.calendarprofilepic{
+	margin-left: 114px;
 }
-.glitch:after {
-  content: attr(data-text);
-  position: absolute;
-  left: 2px;
-  text-shadow: -1px 0 red;
-  top: 0;
-  color: white;
-  background: black;
-  overflow: hidden;
-  clip: rect(0, 900px, 0, 0);
-  animation: noise-anim 2s infinite linear alternate-reverse;
+.calendarprofilepic2{
+	margin-left: 117px;
+}
+.right{
+    float: right;
 }
 
-@keyframes noise-anim-2 {
-  0% {
-    clip: rect(47px, 9999px, 68px, 0);
-  }
-  5% {
-    clip: rect(22px, 9999px, 81px, 0);
-  }
-  10% {
-    clip: rect(38px, 9999px, 57px, 0);
-  }
-  15% {
-    clip: rect(55px, 9999px, 97px, 0);
-  }
-  20% {
-    clip: rect(94px, 9999px, 55px, 0);
-  }
-  25% {
-    clip: rect(98px, 9999px, 79px, 0);
-  }
-  30% {
-    clip: rect(55px, 9999px, 98px, 0);
-  }
-  35% {
-    clip: rect(23px, 9999px, 81px, 0);
-  }
-  40% {
-    clip: rect(70px, 9999px, 36px, 0);
-  }
-  45% {
-    clip: rect(25px, 9999px, 83px, 0);
-  }
-  50% {
-    clip: rect(98px, 9999px, 55px, 0);
-  }
-  55% {
-    clip: rect(52px, 9999px, 22px, 0);
-  }
-  60% {
-    clip: rect(72px, 9999px, 37px, 0);
-  }
-  65% {
-    clip: rect(40px, 9999px, 37px, 0);
-  }
-  70% {
-    clip: rect(15px, 9999px, 86px, 0);
-  }
-  75% {
-    clip: rect(68px, 9999px, 73px, 0);
-  }
-  80% {
-    clip: rect(100px, 9999px, 63px, 0);
-  }
-  85% {
-    clip: rect(75px, 9999px, 77px, 0);
-  }
-  90% {
-    clip: rect(12px, 9999px, 23px, 0);
-  }
-  95% {
-    clip: rect(68px, 9999px, 89px, 0);
-  }
-  100% {
-    clip: rect(17px, 9999px, 72px, 0);
-  }
+.plantimg{
+        position: absolute;
+        z-index: 5;
+ }
+.showimg{
+        z-index: 1;
+ }
+.example-enter {
+  opacity: 0.01;
 }
-.glitch:before {
-  content: attr(data-text);
-  position: absolute;
-  left: -2px;
-  text-shadow: 1px 0 blue;
-  top: 0;
-  color: white;
-  background: black;
-  overflow: hidden;
-  clip: rect(0, 900px, 0, 0);
-  animation: noise-anim-2 3s infinite linear alternate-reverse;
+
+.example-enter.example-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
 }
+
+.example-leave {
+  opacity: 1;
+}
+
+.example-leave.example-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
+}
+#notification{
+	display: none;
+	position: fixed;
+	background:#484349;
+	height: 50px;
+	bottom:0;
+	color:white;
+	right: 400px;
+	padding: 20px;	
+	font-size: 16px;
+	padding-bottom: 30px;
+
+}
+#notification span{
+	color:#109648;
+
+}
+.project-item .add-project{
+	background-color: #D5D5D5;
+	text-align: center;
+}
+.project-item .add-project h1{
+	color:#555151;
+	margin-top: 60px;
+
+}
+.recent-activity .avi{
+	margin-left: 152px;
+}
+.recent-activity .eden{
+	margin-left: 99px;
+}
+.recent-activity .valentine{
+	margin-left: 105px;
+}
+/*pre loader*/
+
+ .circle {
+            border-radius: 50%;
+            position: absolute;
+            margin: auto;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+               width: 120px;
+    height: 120px;
+    border: 20px solid white;
+        }
+
+        .loader {
+            position: fixed;
+            left: 0px;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+            background: url('../functions/preloader/spinnerfast.gif') 50% 50% no-repeat rgba(35, 35, 35, 0.86);
+            display: none;
+        }
